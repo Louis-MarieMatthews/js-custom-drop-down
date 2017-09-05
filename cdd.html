@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom Drop Down (CDD)</title>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="layal-drop-down" id="layal_language">
+        <p class="choice -selectable">{l s='Choose your language.'}</p><!-- TODO lang attribute to input! -->
+        <label class="choice -selectable">
+          <input class="field" lang="en" name="layal_language" type="radio" value="anglais"{if isset($smarty.request.layal_language) && $smarty.request.layal_language == "anglais"} checked{/if} required>Anglais
+        </label>
+        <label class="choice -selectable">
+          <input class="field" lang="ar" name="layal_language" type="radio" value="arabe"{if isset($smarty.request.layal_language) && $smarty.request.layal_language == "arabe"} checked{/if} required>العربية
+        </label>
+        <label class="choice -selectable">
+          <input class="field" lang="fa" name="layal_language" type="radio" value="farsi"{if isset($smarty.request.layal_language) && $smarty.request.layal_language == "farsi"} checked{/if} required>فارسی
+        </label>
+        <label class="choice -selectable">
+          <input class="field" lang="fr" name="layal_language" type="radio" value="français"{if isset($smarty.request.layal_language) && $smarty.request.layal_language == "français"} checked{/if} required>Français
+        </label>
+        <label class="choice -selectable">
+          <input class="field" lang="zh" name="layal_language" type="radio" value="mandarin"{if isset($smarty.request.layal_language) && $smarty.request.layal_language == "mandarin"} checked{/if} required>中文
+        </label>
+        <label class="choice -selectable">
+          <input class="field" lang="nl" name="layal_language" type="radio" value="néerlandais"{if isset($smarty.request.layal_language) && $smarty.request.layal_language == "néerlandais"} checked{/if} required>Nederlands
+        </label>
+      </div>
+    </main>
+  </body>
+</html>
