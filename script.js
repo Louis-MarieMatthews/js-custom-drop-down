@@ -2,83 +2,55 @@
  * @author David Myers
  * @see https://stackoverflow.com/a/24463352/7089212
  */
-var rem = function (count)
+const rem = function getPixelHeightOfOneRem()
 {
-    var unit = $('html').css('font-size');
-
-    if (typeof count !== 'undefined' && count > 0)
-    {
-        return (parseInt(unit) * count);
-    }
-    else
-    {
-        return parseInt(unit);
-    }
+	const unit = $('html').css('font-size');
+	return parseInt(unit);
 }
 
-var closeAllLayalDropdowns = function(choiceHeight) {
-	$('.layal-drop-down').removeClass('-opened').addClass('-closed');
-	$('.layal-drop-down').css('margin-bottom', '');
-	$('.layal-drop-down > .choice:first-child').addClass('-selectable');
+const getAllDropDowns = function fGetAllDropDowns() {
+	return $('.js-custom-drop-down');
 }
 
-var openDropDown = function(dropDown) {
-	var nOfChoices = dropDown.children().length;
-	var choiceHeight = 3.4 * rem();
-		
-	dropDown.removeClass('-closed').addClass('-opened');
-	dropDown.children(':first').removeClass('-selectable');
-	dropDown.css('margin-bottom', parseFloat(dropDown.css('margin-bottom'))-(nOfChoices * choiceHeight) + choiceHeight);
+const getAllDropDownInputs = function fGetAllDropDownInputs() {
+	return $('.js-custom-drop-down > .js-list > .js-choice > .js-label > .js-input');
 }
 
-var closeDropDown = function(dropDown) {
-	dropDown.removeClass('-opened').addClass('-closed');
-	dropDown.children(':first').addClass('-selectable');
-	dropDown.css('margin-bottom', '');
+const getAllClosedDropDownInputs = function fGetAllClosedDropDownInputs() {
+	return $('.js-custom-drop-down.-js-closed > .js-list > .js-choice > .js-label > .js-input');
 }
-// TODO: navigation using keybord, web-aria
-// TODO: set height and overflow: hidden in js and not in style?
-$(document).ready(function() {
 
-	var choiceHeight = 3.4 * rem();
+const getAllOpenDropDownInputs = function fGetAllOpenDropDownInputs() {
+	return $('.js-custom-drop-down.-js-open > .js-list > .js-choice > .js-label > .js-input');
+}
 
-	$('.layal-drop-down').addClass('-js-enabled -closed');
+
+const openDropDown = function fOpenDropDown($dropDown) {
+	$dropDown.removeClass('-js-closed').addClass('-js-open');
+}
+
+const closeDropDown = function fCloseDropDown($dropDown) {
+	$dropDown.removeClass('-js-open').addClass('-js-closed');
+}
+
+$(document).ready(function () {
+	// enables all custom drop-downs and closes them
+	getAllDropDowns().addClass('-js-enabled -js-closed');
 	
-	$('.layal-drop-down').click(function() {
-		var nOfChoices = $(this).children().length;
-		closeAllLayalDropdowns(choiceHeight);
-		$(this).removeClass('-closed').addClass('-opened');
-		$(this).children(':first').removeClass('-selectable');
-		$(this).css('margin-bottom', parseFloat($(this).css('margin-bottom'))-(nOfChoices * choiceHeight) + choiceHeight);
-	});
-
-	$(document).click(function(event){
-		if (!$(event.target).closest('.layal-drop-down').length) {
-			closeAllLayalDropdowns();
+	// FIXME focus callback should be added when drop down is closed and removed when drop down is open
+	getAllDropDownInputs().focus(function () {
+		$dropDown = $(this).closest('.js-custom-drop-down');
+		if ($dropDown.hasClass('-js-closed')) {
+			openDropDown($dropDown);
 		}
 	});
-
-	$('.layal-drop-down > .choice > .field').change(function() {
-		$(this).closest('.layal-drop-down').find('.choice').addClass('-selectable');
-		$(this).closest('.choice').removeClass('-selectable');
-		$(this).closest('.layal-drop-down').find('p').text($(this).closest('label').text());
-		//$(this).closest('.layal-drop-down').removeClass('-opened').addClass('-closed');
-		//$(this).closest('.layal-drop-down').children(':first').addClass('-selectable');
-		//$(this).closest('.layal-drop-down').css('margin-bottom', '');
-	});
-
-	$(document).on('focus', '.layal-drop-down > .choice > .field', function(e){
-		$(e.target).closest('.choice').addClass('layal-focused');
-		$(e.target).closest('.layal-drop-down').scrollTop(0);
-		if ($(e.target).closest('.layal-drop-down').hasClass('-closed')) {
-			openDropDown($(e.target).closest('.layal-drop-down'));
-		}
-	});
-
-	$(document).on('focusout', '.layal-drop-down > .choice > .field', function(e){
-		$(e.target).closest('.choice').removeClass('layal-focused');
-		if (0 === $(e.target).closest('.choice.layal-focused').length) {
-			closeDropDown($(e.target).closest('.layal-drop-down'));
+	
+	// FIXME focusout callback should be added when drop down gets open and removed when drop down gets closed
+	getAllDropDowns().focusout(function () {
+		$dropDown = $(this).closest('.js-custom-drop-down');
+		if ($dropDown.hasClass('-js-open')) {
+			closeDropDown($dropDown);
 		}
 	});
 });
+

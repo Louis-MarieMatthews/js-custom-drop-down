@@ -9,27 +9,43 @@
   </head>
   <body>
     <main>
-      <div class="layal-drop-down" id="user-language">
-        <p class="choice -selectable">Choose your language.</p>
-        <label class="choice -selectable">
-          <input class="field" lang="en" name="user-language" type="radio" value="anglais" required>Anglais
-        </label>
-        <label class="choice -selectable">
-          <input class="field" lang="ar" name="user-language" type="radio" value="arabe" checked required>العربية
-        </label>
-        <label class="choice -selectable">
-          <input class="field" lang="fa" name="user-language" type="radio" value="farsi" required>فارسی
-        </label>
-        <label class="choice -selectable">
-          <input class="field" lang="fr" name="user-language" type="radio" value="français" required>Français
-        </label>
-        <label class="choice -selectable">
-          <input class="field" lang="zh" name="user-language" type="radio" value="mandarin" required>中文
-        </label>
-        <label class="choice -selectable">
-          <input class="field" lang="nl" name="user-language" type="radio" value="néerlandais" required>Nederlands
-        </label>
+      <!-- FIXME test with one initally checked label -->
+      <div class="js-custom-drop-down">
+        <p class="js-currentchoice">Choose.</p>
+        <ul class="js-list">
+          <li class="js-choice">
+            <label class="js-label">
+              <input class="js-input" type="radio">Choice 0
+            </label>
+          </li>
+          <li class="js-choice">
+          <label class="js-label">
+            <input class="js-input" type="radio">Choice 1
+          </label>
+          </li>
+          <li class="js-choice">
+          <label class="js-label">
+            <input class="js-input" type="radio">Choice 2
+          </label>
+          </li>
+          <li class="js-choice">
+          <label class="js-label">
+            <input class="js-input" type="radio">Choice 3
+          </label>
+          </li>
+          <li class="js-choice">
+          <label class="js-label">
+            <input class="js-input" type="radio">Choice 4
+          </label>
+          </li>
+          <li class="js-choice">
+          <label class="js-label">
+            <input class="js-input" type="radio">Choice 5 
+          </label>
+          </li>
+        </ul>
       </div>
+      <input type="text">
     </main>
   </body>
 </html>

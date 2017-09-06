@@ -1,0 +1,9 @@
+.js-custom-drop-down {
+  &.-js-enabled.-js-closed > .js-list {
+    height: 0;
+    overflow-y: hidden;
+  }
+
+  &.-js-enabled.-js-open > .js-list {
+  }
+}
