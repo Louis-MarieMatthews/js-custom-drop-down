@@ -5,5 +5,7 @@
   }
 
   &.-js-enabled.-js-open > .js-list {
+    position: relative;
+    background: red;
   }
 }
