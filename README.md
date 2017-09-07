@@ -61,5 +61,4 @@ features of the drop-downs. However, *do not modify `js-custom-drop-down.scss`.
  * Check usability on mobiles devices.
  * Fix FIXME and TODOs.
  * Publish on NPM.
- * Minimify JavaScript.
  * Check full conformance to the AirBnb coding style.

@@ -12,10 +12,19 @@ module.exports = function(grunt) {
             'custom-style.min.css':'sass/custom-style.scss'
           }
         }
+      },
+      
+      uglify: {
+        my_target: {
+          files: {
+            'js-custom-drop-down.min.js': ['rawjs/js-custom-drop-down.js']
+          }
+        }
       }
     });
   
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
   
     grunt.registerTask('default', ['sass']);
   };
