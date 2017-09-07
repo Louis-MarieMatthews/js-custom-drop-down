@@ -110,6 +110,10 @@ $(document).ready(function () {
 	});
 	$('.js-label').focusin(function () {
 		const $this = $(this);
+		$this.addClass('-js-selected');
 		updateCurrentChoice($this.closest('.js-custom-drop-down'), $this.text());
 	})
+	$('.js-label').focusout(function () {
+		$(this).removeClass('-js-selected');
+	});
 });

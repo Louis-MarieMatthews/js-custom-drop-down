@@ -1,5 +1,9 @@
 // You can modify the appearance of all drop-downs in this file.
 .js-custom-drop-down.-js-enabled {
+
+  &.-js-closed > .js-currentchoice:hover {
+    text-decoration: underline;
+  }
   
   > .js-currentchoice {
     margin-bottom: 0;
@@ -13,6 +17,14 @@
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
+  }
+  
+  > .js-list > .js-choice > .js-label:hover {
+    text-decoration: underline;
+  }
+  
+  > .js-list > .js-choice > .js-label.-js-selected {
+    outline: 2px solid black;
   }
 
   > .js-list > .js-choice > .js-label > .js-input {
