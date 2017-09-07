@@ -43,6 +43,10 @@ const getAllCheckedDropDownInputs = function fGetAllCheckedDropDownInputs() {
 	return $('.js-custom-drop-down > .js-list > .js-choice > .js-label > .js-input[checked]');
 }
 
+const getAllDropDownLabels = function fGetAllDropDownLabels() {
+	return $('.js-custom-drop-down > .js-list > .js-choice > .js-label');
+}
+
 const openDropDown = function fOpenDropDown($dropDown) {
 	// closes the currently open drop-down
 	closeDropDown(getCurrentlyOpenDropDown());
@@ -68,8 +72,6 @@ const updateCurrentChoice = function fUpdateCurrentChoice($dropDown, text) {
 	$dropDown.children('.js-currentchoice').text(text);
 }
 
-// FIXME what if there are other interactive elements inside the drop-down?
-// FIXME what if a closed drop-down gets focus after one?
 // TODO add namespaces to all classes (js-cdd-…) and/or use configurable class names
 const processNewFocusIn = function processNewFocusIn() {
 	const $this = $(this);
@@ -126,14 +128,14 @@ $(document).ready(function () {
 			openDropDown($parentDropDown);
 		}
 	});
-	// TODO: replace by getAllDropDownLabels with entire selector	
-	$('.js-label').focusin(function () {
+
+	getAllDropDownLabels().focusin(function () {
 		const $this = $(this);
 		$this.addClass('-js-selected');
 		updateCurrentChoice($this.closest('.js-custom-drop-down'), $this.text());
 	})
-	// TODO: replace by getAllDropDownLabels with entire selector
-	$('.js-label').focusout(function () {
+
+	getAllDropDownLabels().focusout(function () {
 		$(this).removeClass('-js-selected');
 	});
 });
