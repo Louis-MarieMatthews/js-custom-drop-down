@@ -12,43 +12,22 @@ All CSS classes are prefixed with `js` or `-js`. The CSS coding style used is
 You need to include the `js-custom-drop-down.min.css` and the `script.js` files 
 to be able to use drop-downs in your pages.
 
-The structure of a drop-down is show in `cdd.html`.
+The structure of a drop-down is show in `cdd.html`. You can use the following 
+code as a quick start for your drop-down. Don't forget:
+ * to put something inside the `js-currentchoice` paragraph, 
+ * to give the `input` elements a `name` and a `value`, 
+ * and to add text to the labels.
 ~~~~
-  <div class="js-custom-drop-down">
-    <p class="js-currentchoice">Choose.</p>
-    <ul class="js-list">
-      <li class="js-choice">
-        <label class="js-label">
-          <input class="js-input" name="user-choice" type="radio">Choice 0
-        </label>
-      </li>
-      <li class="js-choice">
+<div class="js-custom-drop-down">
+  <p class="js-currentchoice"></p>
+  <ul class="js-list">
+    <li class="js-choice">
       <label class="js-label">
-        <input class="js-input" name="user-choice" type="radio">Choice 1
+        <input class="js-input" name="" type="radio" value="">
       </label>
-      </li>
-      <li class="js-choice">
-      <label class="js-label">
-        <input class="js-input" name="user-choice" type="radio">Choice 2
-      </label>
-      </li>
-      <li class="js-choice">
-      <label class="js-label">
-        <input class="js-input" name="user-choice" type="radio">Choice 3
-      </label>
-      </li>
-      <li class="js-choice">
-      <label class="js-label">
-        <input class="js-input" name="user-choice" type="radio">Choice 4
-      </label>
-      </li>
-      <li class="js-choice">
-      <label class="js-label">
-        <input class="js-input" name="user-choice" type="radio">Choice 5 
-      </label>
-      </li>
-    </ul>
-  </div>
+    </li>
+  </ul>
+</div>
 ~~~~
 
 The CSS code can be fully customised. `custom-style.scss` is an example of a 
@@ -62,3 +41,4 @@ features of the drop-downs. However, *do not modify `js-custom-drop-down.scss`.
  * Fix FIXME and TODOs.
  * Publish on NPM.
  * Check full conformance to the AirBnb coding style.
+ * Remove potential required attributes.
