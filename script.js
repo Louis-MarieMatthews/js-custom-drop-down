@@ -58,6 +58,10 @@ const closeDropDown = function fCloseDropDown($dropDown) {
 	$dropDown.removeClass('-js-open').addClass('-js-closed');
 }
 
+const updateCurrentChoice = function fUpdateCurrentChoice($dropDown, text) {
+	$dropDown.children('.js-currentchoice').text(text);
+}
+
 // FIXME what if there are other interactive elements inside the drop-down?
 // FIXME what if a closed drop-down gets focus after one?
 // TODO add namespaces to all classes (js-cdd-…) and/or use configurable class names
@@ -104,4 +108,8 @@ $(document).ready(function () {
 			openDropDown($parentDropDown);
 		}
 	});
+	$('.js-label').focusin(function () {
+		const $this = $(this);
+		updateCurrentChoice($this.closest('.js-custom-drop-down'), $this.text());
+	})
 });
