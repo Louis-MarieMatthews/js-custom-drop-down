@@ -62,7 +62,7 @@ const openDropDown = function fOpenDropDown($dropDown) {
 const closeDropDown = function fCloseDropDown($dropDown) {
 	// updates margin-bottom
 	const oldBMargin = parseFloat($dropDown.css('margin-bottom'));
-	const listHeight = $dropDown.children('.js-list').outerHeights();
+	const listHeight = $dropDown.children('.js-list').outerHeight();
 	$dropDown.css('margin-bottom', oldBMargin + listHeight);
 
 	$dropDown.removeClass('-js-open').addClass('-js-closed');
