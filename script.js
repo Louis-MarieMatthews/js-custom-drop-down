@@ -20,12 +20,23 @@ const getAllClosedDropDownInputs = function fGetAllClosedDropDownInputs() {
 	return $('.js-custom-drop-down.-js-closed > .js-list > .js-choice > .js-label > .js-input');
 }
 
+// there can only be one open drop-down at the same time
 const getAllOpenDropDownInputs = function fGetAllOpenDropDownInputs() {
 	return $('.js-custom-drop-down.-js-open > .js-list > .js-choice > .js-label > .js-input');
 }
 
+const getCurrentlyOpenDropDown = function fGetCurrentlyOpenDropDown() {
+	return $('.js-custom-drop-down.-js-open');
+}
+
+const getAllInteractiveElements = function fGetAllInteractiveElements() {
+	return $('a[href], audio[controls], button, details, embed, iframe, img[usemap], input:not(input[type="hidden"]), keygen, label, select, textarea, video[controls]');
+}
 
 const openDropDown = function fOpenDropDown($dropDown) {
+	// closes the currently open drop-down
+	closeDropDown(getCurrentlyOpenDropDown());
+
 	$dropDown.removeClass('-js-closed').addClass('-js-open');
 	
 	// updates margin-bottom
@@ -43,24 +54,26 @@ const closeDropDown = function fCloseDropDown($dropDown) {
 	$dropDown.removeClass('-js-open').addClass('-js-closed');
 }
 
+// FIXME what if there are other interactive elements inside the drop-down?
+// FIXME what if a closed drop-down gets focus after one?
+// TODO add namespaces to all classes (js-cdd-…) and/or use configurable class names
+const processNewFocusIn = function processNewFocusIn() {
+	const $this = $(this);
+	const parentDropDownIfAny = $this.closest('.js-custom-drop-down');
+	const isWithinDropDown = 0 !== parentDropDownIfAny.length;
+	if (isWithinDropDown && parentDropDownIfAny.hasClass('-js-closed')) {
+		// closes the currently open drop-down
+		openDropDown(parentDropDownIfAny);
+	} else if (!isWithinDropDown) {
+		console.log($this);
+		// closes the currently open drop-down
+		closeDropDown(getCurrentlyOpenDropDown());
+	}
+}
+
 $(document).ready(function () {
 	// enables all custom drop-downs and closes them
 	getAllDropDowns().addClass('-js-enabled -js-closed');
-	
-	// FIXME focus callback should be added when drop down is closed and removed when drop down is open
-	getAllDropDownInputs().focus(function () {
-		$dropDown = $(this).closest('.js-custom-drop-down');
-		if ($dropDown.hasClass('-js-closed')) {
-			openDropDown($dropDown);
-		}
-	});
-	
-	// FIXME focusout callback should be added when drop down gets open and removed when drop down gets closed
-	getAllDropDowns().focusout(function () {
-		$dropDown = $(this).closest('.js-custom-drop-down');
-		if ($dropDown.hasClass('-js-open')) {
-			closeDropDown($dropDown);
-		}
-	});
-});
 
+	getAllInteractiveElements().focusin(processNewFocusIn);
+});
