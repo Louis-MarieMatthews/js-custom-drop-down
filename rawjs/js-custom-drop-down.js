@@ -52,21 +52,9 @@ const openDropDown = function fOpenDropDown($dropDown) {
 	closeDropDown(getCurrentlyOpenDropDown());
 
 	$dropDown.removeClass('-js-closed').addClass('-js-open');
-	
-	// updates margin-top
-	const oldBMargin = parseFloat($dropDown.css('margin-top'));
-	const listHeight = $dropDown.children('.js-list').outerHeight();
-	//$dropDown.css('margin-top', oldBMargin - listHeight);
-	//$dropDown.css('bottom', listHeight);
 }
 
 const closeDropDown = function fCloseDropDown($dropDown) {
-	// updates margin-top
-	const oldBMargin = parseFloat($dropDown.css('margin-top'));
-	const listHeight = $dropDown.children('.js-list').outerHeight();
-	//$dropDown.css('margin-top', oldBMargin + listHeight);
-	//$dropDown.css('top', 0);
-
 	$dropDown.removeClass('-js-open').addClass('-js-closed');
 }
 
