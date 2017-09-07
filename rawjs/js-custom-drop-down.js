@@ -39,6 +39,10 @@ const getAllDropDownCurrentChoices = function fGetAllDropDownCurrentChoices() {
 	return $('.js-custom-drop-down > .js-currentchoice');
 }
 
+const getAllCheckedDropDownInputs = function fGetAllCheckedDropDownInputs() {
+	return $('.js-custom-drop-down > .js-list > .js-choice > .js-label > .js-input[checked]');
+}
+
 const openDropDown = function fOpenDropDown($dropDown) {
 	// closes the currently open drop-down
 	closeDropDown(getCurrentlyOpenDropDown());
@@ -85,6 +89,15 @@ $(document).ready(function () {
 	// enables all custom drop-downs and closes them
 	getAllDropDowns().addClass('-js-enabled -js-closed');
 
+	// updates drop-downs' current choice
+	getAllCheckedDropDownInputs().each(function () {
+		const $this = $(this);
+		$this.closest('.js-list')
+			.siblings('.js-currentchoice')
+			.text($this.closest('.js-label').text());
+	});
+
+
 	// process keyboard inputs
 	getAllInteractiveElements().focusin(processNewFocusIn);
 
@@ -110,11 +123,13 @@ $(document).ready(function () {
 			openDropDown($parentDropDown);
 		}
 	});
+	// TODO: replace by getAllDropDownLabels with entire selector	
 	$('.js-label').focusin(function () {
 		const $this = $(this);
 		$this.addClass('-js-selected');
 		updateCurrentChoice($this.closest('.js-custom-drop-down'), $this.text());
 	})
+	// TODO: replace by getAllDropDownLabels with entire selector
 	$('.js-label').focusout(function () {
 		$(this).removeClass('-js-selected');
 	});
