@@ -9,14 +9,17 @@
     margin-bottom: 0;
     margin-top: 0;
   }
+
+  > .js-list {
+    background-color: #ffffff;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+  }
   
   &.-js-open > .js-list {
-    background-color: #ffffff;
     border: 1px solid rgb(63, 63, 63);
-    list-style-type: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
   }
   
   > .js-list > .js-choice > .js-label:hover {
