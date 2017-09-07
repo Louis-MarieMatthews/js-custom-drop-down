@@ -1,4 +1,6 @@
 /**
+ * Calculates in pixels the size of one rem.
+ * 
  * @author David Myers
  * @see https://stackoverflow.com/a/24463352/7089212
  */
