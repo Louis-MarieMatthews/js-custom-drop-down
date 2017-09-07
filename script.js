@@ -89,4 +89,11 @@ $(document).ready(function () {
 			closeDropDown($openDropDown);
 		}
 	});
+
+	$('.js-custom-drop-down > .js-currentchoice').click(function () {
+		const $parentDropDown = $(this).closest('.js-custom-drop-down');
+		if ($parentDropDown.hasClass('-js-closed')) {
+			openDropDown($parentDropDown);
+		}
+	});
 });
