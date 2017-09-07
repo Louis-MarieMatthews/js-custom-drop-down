@@ -89,6 +89,9 @@ $(document).ready(function () {
 	// enables all custom drop-downs and closes them
 	getAllDropDowns().addClass('-js-enabled -js-closed');
 
+	// removes required attributes
+	getAllDropDownInputs().removeAttr('required');
+
 	// updates drop-downs' current choice
 	getAllCheckedDropDownInputs().each(function () {
 		const $this = $(this);
