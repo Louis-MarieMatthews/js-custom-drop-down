@@ -49,13 +49,13 @@ const getAllDropDownLabels = function fGetAllDropDownLabels() {
 
 const openDropDown = function fOpenDropDown($dropDown) {
 	// closes the currently open drop-down
-	closeDropDown(getCurrentlyOpenDropDown());
+	closeDropDown();
 
 	$dropDown.removeClass('-js-closed').addClass('-js-open');
 }
 
-const closeDropDown = function fCloseDropDown($dropDown) {
-	$dropDown.removeClass('-js-open').addClass('-js-closed');
+const closeDropDown = function fCloseDropDown() {
+	getCurrentlyOpenDropDown().removeClass('-js-open').addClass('-js-closed');	
 }
 
 const updateCurrentChoice = function fUpdateCurrentChoice($dropDown, text) {
@@ -73,7 +73,7 @@ const processNewFocusIn = function processNewFocusIn() {
 	} else if (!isWithinDropDown) {
 		console.log($this);
 		// closes the currently open drop-down
-		closeDropDown(getCurrentlyOpenDropDown());
+		closeDropDown();
 	}
 }
 
@@ -107,7 +107,7 @@ $(document).ready(function () {
 		if ($openDropDown.hasClass('-js-just-clicked')) {
 			$openDropDown.removeClass('-js-just-clicked');
 		} else {
-			closeDropDown($openDropDown);
+			closeDropDown();
 		}
 	});
 
