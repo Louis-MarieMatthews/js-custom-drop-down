@@ -1,0 +1,22 @@
+// You can modify the appearance of all drop-downs in this file.
+.js-custom-drop-down.-js-enabled {
+  
+  > .js-currentchoice {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  
+  &.-js-open > .js-list {
+    background-color: #ffffff;
+    border: 1px solid rgb(63, 63, 63);
+    list-style-type: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  > .js-list > .js-choice > .js-label > .js-input {
+    position: fixed;
+    top: 100%;
+  }
+}

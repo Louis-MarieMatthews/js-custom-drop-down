@@ -8,7 +8,8 @@ module.exports = function(grunt) {
             style: 'compressed'
           },
           files: {
-            'style.min.css':['sass/js-custom-drop-down.scss', 'sass/style.scss'],
+            'js-custom-drop-down.min.css':'sass/js-custom-drop-down.scss',
+            'custom-style.min.css':'sass/custom-style.scss'
           }
         }
       }
