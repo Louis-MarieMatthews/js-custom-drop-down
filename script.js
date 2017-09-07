@@ -76,4 +76,17 @@ $(document).ready(function () {
 	getAllDropDowns().addClass('-js-enabled -js-closed');
 
 	getAllInteractiveElements().focusin(processNewFocusIn);
+
+	getAllDropDowns().click(function () {
+		$(this).addClass('-js-just-clicked');
+	});
+
+	$(document).click(function () {
+		const $openDropDown = getCurrentlyOpenDropDown();
+		if ($openDropDown.hasClass('-js-just-clicked')) {
+			$openDropDown.removeClass('-js-just-clicked');
+		} else {
+			closeDropDown($openDropDown);
+		}
+	});
 });
