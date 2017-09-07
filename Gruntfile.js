@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             style: 'compressed'
           },
           files: {
-            'style.min.css':'sass/style.scss',
+            'style.min.css':['sass/js-custom-drop-down.scss', 'sass/style.scss'],
           }
         }
       }

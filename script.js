@@ -33,6 +33,10 @@ const getAllInteractiveElements = function fGetAllInteractiveElements() {
 	return $('a[href], audio[controls], button, details, embed, iframe, img[usemap], input:not(input[type="hidden"]), keygen, label, select, textarea, video[controls]');
 }
 
+const getAllDropDownCurrentChoices = function fGetAllDropDownCurrentChoices() {
+	return $('.js-custom-drop-down > .js-currentchoice');
+}
+
 const openDropDown = function fOpenDropDown($dropDown) {
 	// closes the currently open drop-down
 	closeDropDown(getCurrentlyOpenDropDown());
@@ -75,12 +79,15 @@ $(document).ready(function () {
 	// enables all custom drop-downs and closes them
 	getAllDropDowns().addClass('-js-enabled -js-closed');
 
+	// process keyboard inputs
 	getAllInteractiveElements().focusin(processNewFocusIn);
 
+	// process clicks - step 0
 	getAllDropDowns().click(function () {
 		$(this).addClass('-js-just-clicked');
 	});
 
+	// process clicks - step 1
 	$(document).click(function () {
 		const $openDropDown = getCurrentlyOpenDropDown();
 		if ($openDropDown.hasClass('-js-just-clicked')) {
@@ -90,7 +97,8 @@ $(document).ready(function () {
 		}
 	});
 
-	$('.js-custom-drop-down > .js-currentchoice').click(function () {
+	// process clicks - step 2 (on current choice)
+	getAllDropDownCurrentChoices().click(function () {
 		const $parentDropDown = $(this).closest('.js-custom-drop-down');
 		if ($parentDropDown.hasClass('-js-closed')) {
 			openDropDown($parentDropDown);
