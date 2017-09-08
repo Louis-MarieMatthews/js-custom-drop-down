@@ -43,3 +43,4 @@ features of the drop-downs. However, *do not modify `js-custom-drop-down.scss`.
  * Check full conformance to the AirBnb coding style.
  * Update version of js-custom-drop-down in package.json.
  * Fix keyboard navigation
+ * User should be able to de-select choice if drop-down is not required
