@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAGE,oDAAoC,CAClC,MAAM,CAAE,CAAC,CACT,UAAU,CAAE,MAAM,CAGpB,kDAAkC,CAChC,QAAQ,CAAE,QAAQ",
+"mappings": "AAGE,oDAAoC,CAClC,MAAM,CAAE,CAAC,CACT,UAAU,CAAE,MAAM,CAGpB,yCAAyB,CACvB,QAAQ,CAAE,QAAQ",
 "sources": ["sass/js-custom-drop-down.scss"],
 "names": [],
 "file": "js-custom-drop-down.min.css"
