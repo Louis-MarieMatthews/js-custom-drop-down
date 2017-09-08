@@ -16,10 +16,12 @@
     margin-bottom: 0;
     margin-top: 0;
     padding-left: 0;
+    max-height: 20rem;
   }
   
   &.-js-open > .js-list {
     border: 1px solid rgb(63, 63, 63);
+    overflow-y: scroll;
   }
   
   > .js-list > .js-choice > .js-label:hover {
