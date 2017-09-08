@@ -42,3 +42,4 @@ features of the drop-downs. However, *do not modify `js-custom-drop-down.scss`.
  * Publish on NPM.
  * Check full conformance to the AirBnb coding style.
  * Update version of js-custom-drop-down in package.json.
+ * Fix keyboard navigation
